@@ -1,62 +1,132 @@
-body, html {
-    height: 100%;
-    font-family: Comfortaa, Arial, sans-serif
-}
-
+/* GENERAL */
 * {
-    margin: 0;
-    padding: 0;
+    font-family: Comfortaa ,Arial, Helvetica, sans-serif;
 }
 
-a {
-    text-decoration: none;
-    color: #000;
+img {
+    max-width: 350px;
+    height: auto;
 }
 
-ul {
-    display: flex   
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
 }
 
-li {
-    list-style-type: none;
+.red-divider {
+    width: 100px;
+    height: 3px;
+    background: #00a8db;
+    margin: auto;
+    margin-bottom: 30px;
 }
 
-a:hover {
-    color: #00a8db;
+.white-divider {
+    width: 100px;
+    height: 3px;
+    background: #fff;
+    margin: auto;
+    margin-bottom: 30px;
 }
+
+section {
+    padding: 45px 0 80px 0;
+}
+
 
 /* BODY */
 
- /* HEADER */
-header {
-    display: flex;
-    height: 150px;
-    align-items: center;
+/* ABOUT ME */
+#container_about_me {
+    padding-top: 100px;
+    padding-bottom: 40px;
+    background: #00a8db;
 }
-  
-header h1 {
-    flex: 1;
-    margin-left: 10%;
-    font-size: 50px;
+
+.profil_picture {
+    text-align: center;
+    margin: 0 auto;
 }
-  
-header nav {
-    top: 15%;
-    z-index: 2;
-    width: 50%;
-    float: right;
+
+#text_about_me {
+    margin-top: 30px;
+    text-align: center;
 }
-  
-header nav ul li {
-    margin: 0 40px 0 40px;
+
+#text_about_me h1 {
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 25px;
 }
-  
-header nav ul li a {
-    font-size: 30px;
+
+#text_about_me h2 {
+    color: #000;
+    margin-bottom: 25px;
+}
+#text_about_me h3 {
+    color: #000;
+}
+
+.button1 {
     font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    border: 3px solid white;
+    margin-top: 20px;
+    padding: 18px 40px;
+    border-radius: 7px;
+    display: inline-block;
+    transition: all 0.15s ease-in 0s;
 }
-  
-nav a:hover {
-    font-size: 35px;
+
+.button1:hover {
+    background: #fff;
+    color: #00a8db;
+    text-decoration: none;
 }
-  
+
+/* SKILLS */
+#skills {
+    background: #fff;
+}
+
+#skills #text_skills h2 {
+    text-align: center;
+    color: #00a8db;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+#skills .progress {
+    height: 30px;
+    margin: 30px 30px 0 0;
+}
+
+#skills .progress-bar {
+    background: #00a8db;
+}
+
+#skills .progress h5 {
+    text-shadow: 1px 1px 1px black;
+    margin: 0;
+}
+
+/* EXPERIENCES */
+#experiences {
+    background: #00a8db;
+}
+
+#experiences #text_experiences h2 {
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.timeline {
+    padding: 30px 10px;
+    position: relative;
+}
+
+.timeline:before {
+    
+}
+/* HEADER */
