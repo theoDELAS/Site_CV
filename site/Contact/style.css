@@ -85,22 +85,25 @@ form {
     padding-bottom: 100px;
 }
 
-form .btn_envoyer {
-    margin-top: 20px;
-    text-align: center;
-}
-
-form .error {
-    color: red;
-    font-size: 15px;
-    height: 15px;
-    font-style: italic;
-}
-
 form #send {
     margin: auto;
     display: block;
     width: 100%;
+}
+
+form .error {
+    color: red;
+}
+
+form #thanks {
+    margin-top: 20px;
+    text-align: center;
+    color: #00a8db;
+    font-weight: bold;
+}
+
+form #requis {
+    color: #00a8db;
 }
 
 /* 

@@ -2,42 +2,39 @@
 <html lang="fr">
     <head>
         <?php include_once '../header_html.php' ?>;
-        <title>Document</title>
+        <title>test connexion</title>
     </head>
     <body>
         <?php
-            if(isset($_POST['connexion'])) 
+            if(empty($_POST['id'])) 
             {
-                if(empty($_POST['id'])) 
+                echo 'Le champ identifiant est vide.';
+                echo '<a href="index.php">Retour</a>';
+            } 
+            else 
+            {
+                if(empty($_POST['mdp'])) 
                 {
-                    echo 'Le champ identifiant est vide.';
+                    echo 'Le champ mot de passe est vide.';
                     echo '<a href="index.php">Retour</a>';
                 } 
                 else 
                 {
-                    if(empty($_POST['mdp'])) 
+                    if($_POST['id'] !== 'admin') 
                     {
-                        echo 'Le champ mot de passe est vide.';
+                        echo 'L\'identifiant est incorrect.';
                         echo '<a href="index.php">Retour</a>';
                     } 
                     else 
                     {
-                        if($_POST['id'] !== 'root') 
+                        if($_POST['mdp'] !== 'admin') 
                         {
-                            echo 'L\'identifiant est incorrect.';
+                            echo 'Le mot de passe est incorrect.';
                             echo '<a href="index.php">Retour</a>';
                         } 
                         else 
                         {
-                            if($_POST['mdp'] !== 'root') 
-                            {
-                                echo 'Le mot de passe est incorrect.';
-                                echo '<a href="index.php">Retour</a>';
-                            } 
-                            else 
-                            {
-                                include_once 'accueil_admin.php';
-                            }
+                            header('Location: ./messagerie/index.php');
                         }
                     }
                 }

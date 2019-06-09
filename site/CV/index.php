@@ -1,3 +1,25 @@
+<?php
+    try 
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=cv', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+    } catch (Exception $e)
+    {
+        die('Erreur : ' . $e -> getMessage());
+    }
+    $query = $bdd->query('SELECT * FROM texte_header_cv');
+    $donnees = $query->fetch();
+
+    $query2 = $bdd->query('SELECT * FROM competences ORDER BY id');
+
+    $query3 = $bdd->query('SELECT * FROM experiences_pro');
+
+    $query4 = $bdd->query('SELECT * FROM experiences_pro WHERE id%2 = 0');
+
+    $query5 = $bdd->query('SELECT * FROM experiences_pro WHERE id%2 = 1');
+
+    $query6 = $bdd->query('SELECT * FROM diplomes ORDER BY id');
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,12 +44,12 @@
 
         <section id="container_about_me" class="container-fluid">
             <div class="col-xs-8 col-md-4 profil_picture">
-                <img src="../../images/photo_CV.png" alt="photo de profil Théo Delas" class="rounded-circle">
+                <img src=<?='"' . $donnees['photo'] . '"'?> alt="photo de profil Théo Delas" class="rounded-circle">
             </div>
             <div id="text_about_me">
-                <h1>Théo Delas</h1>
-                <h2>Etudiant à Ingésup - Ynov Informatique</h2>
-                <h3>1ère année</h3>
+                <h1><?= $donnees['titre1'] ?></h1>
+                <h2><?= $donnees['titre2'] ?></h2>
+                <h3><?= $donnees['titre3'] ?></h3>
                 <a href="../../Documents/CV Théo DELAS 2019.pdf" class="button1">Télécharger CV</a>
             </div>
         </section>
@@ -39,43 +61,22 @@
             </div>
             <div class="container">
                 <div class="row">
+                <?php 
+                while ($donnees2 = $query2->fetch()) 
+                {
+                ?>
+
                     <!-- CONTAINER LEFT PROGRESS-BAR -->
                     <div class="col-md-6">
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
-                                <h5>HTML 70%</h5>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width:65%">
-                                <h5>CSS 65%</h5>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%">
-                                <h5>JAVASCRIPT 60%</h5>
+                            <div class="progress-bar" role="progressbar" aria-valuenow="<?= $donnees2['pourcentage'] ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $donnees2['pourcentage'] ?>%">
+                                <h5><?= $donnees2['ma_competence'] . ' ' . $donnees2['pourcentage'] . '%' ?></h5>
                             </div>
                         </div>
                     </div>
-                    <!-- CONTAINER RIGHT PROGRESS-BAR -->
-                    <div class="col-md-6">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                                <h5>JQUERY 50%</h5>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width:65%">
-                                <h5>PYTHON 65%</h5>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%">
-                                <h5>GIT 60%</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                }
+                ?>
             </div>
         </section>
         <!-- EXPERIENCES -->
@@ -84,95 +85,48 @@
                 <div class="white_divider"></div>
                 <div id="text_experiences">
                     <h2>Epériences professionelles</h2>
+                    
                 </div>
                 <ul class="timeline">
-                    <li>
-                        <!-- ICON VALISE -->
-                        <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
-                        <div class="timeline_panel_container">
-                            <div class="timeline_panel">
-                                <div class="timeline_text">
-                                    <h4>Aquitaine Verre Décor / Concept Emballage</h4>
-                                    <h3>Manutentionnaire - Intérimaire</h3>
-                                    <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> 2017 - 2018</p>
-                                </div>
-                                <div class="timeline_body">
-                                    <p>Contrôle qualité</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    <?php while($donnees4 = $query4->fetch())
+                    {
+                        $donnees5 = $query5->fetch();
 
-                    <li>
-                        <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
-                        <div class="timeline_panel_container_inverted">
-                            <div class="timeline_panel">
-                                <div class="timeline_text">
-                                    <h4>ALED Sécurité</h4>
-                                    <h3>Assistant Technique - Stagiaire</h3>
-                                    <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> 2016 - 2017</p>
-                                </div>
-                                <div class="timeline_body">
-                                    <p>Observation et aide à l'installation de systèmes de vidéosurveillance</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
-                        <div class="timeline_panel_container">
-                            <div class="timeline_panel">
-                                <div class="timeline_text">
-                                    <h4>Pinasse Café</h4>
-                                    <h3>Emploi saisonnier - Runner</h3>
-                                    <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> 2016 - 2017</p>
-                                </div>
-                                <div class="timeline_body">
-                                    <p>Interface entre cuisines et salles : transport sur des plateaux les commandes des clients aux serveurs</p>
-                                    <p>Mise en place et nettoyage des salles</p>
-                                    <p>Réception marchandises</p>
-                                    <p>Gestion de stocks</p>
-                                    <p>Cuisson des pains</p>
+                    ?>                  
+                        <li>
+                            <!-- ICON VALISE -->
+                            <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
+                            <div class="timeline_panel_container">
+                                <div class="timeline_panel">
+                                    <div class="timeline_text">
+                                        <h4><?= $donnees4['lieu_entreprise'] ?></h4>
+                                        <h3><?= $donnees4['poste'] ?></h3>
+                                        <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> <?= $donnees4['duree'] ?></p>
+                                    </div>
+                                    <div class="timeline_body">
+                                        <p><?= $donnees4['texte_experience'] ?></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
-                        <div class="timeline_panel_container_inverted">
-                            <div class="timeline_panel">
-                                <div class="timeline_text">
-                                    <h4>G-TEC</h4>
-                                    <h3>Responsable méthode QSE - Stagiaire</h3>
-                                    <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> Juillet 2016 - Août 2016</p>
-                                </div>
-                                <div class="timeline_body">
-                                    <p>Création de procès verbaux de prise en charge d'installation</p>
-                                    <p>Créations d'étiquettes préventives</p>
-                                    <p>Tri de dossiers</p>
-                                    <p>Contrôle du bon fonctionnement de climatisations</p>
+                        </li>
+                        <li>
+                            <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
+                            <div class="timeline_panel_container_inverted">
+                                <div class="timeline_panel">
+                                    <div class="timeline_text">
+                                        <h4><?= $donnees5['lieu_entreprise'] ?></h4>
+                                        <h3><?= $donnees5['poste'] ?></h3>
+                                        <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> <?= $donnees5['duree'] ?></p>
+                                    </div>
+                                    <div class="timeline_body">
+                                        <p><?= $donnees5['texte_experience'] ?></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
-                        <div class="timeline_panel_container">
-                            <div class="timeline_panel">
-                                <div class="timeline_text">
-                                    <h4>HUDEL Ebénisterie d'Art</h4>
-                                    <h3>Stage d'observation</h3>
-                                    <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> 2012</p>
-                                </div>
-                                <div class="timeline_body">
-                                    <p>Observation et travail du bois, réfection de mobiliers</p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
             </div>
         </section>
@@ -184,35 +138,21 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="diplome_block">
-                            <h5>2015</h5>
-                            <span><img src="../../images/graduate_icon.png" alt="diplomes icon"></span>
-                            <h4><a href="https://www.smb33.fr/" target="_blank" title="site st marie bastide" alt="site st marie bastide">Lycée Sainte Marie Bastide</a></h4>
-                            <div class="blue_divider"></div>
-                            <h3>Baccalauréat Scientifique SVT</h3>
+                <?php while($donnees6 = $query6->fetch())
+                    {
+                    ?>
+                        <div class="col-lg-4">
+                            <div class="diplome_block">
+                                <h5><?= $donnees6['date'] ?></h5>
+                                <span><img src="../../images/graduate_icon.png" alt="diplomes icon"></span>
+                                <h4><a href=<?='"' . $donnees6['site'] . '"'?> target="_blank" title=<?= '"site ' . $donnees6['etablissement'] . '"'?> alt="site st marie bastide"><?= $donnees6['etablissement'] ?></a></h4>
+                                <div class="blue_divider"></div>
+                                <h3><?= $donnees6['intitule'] ?></h3>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="col-lg-4">
-                        <div class="diplome_block">
-                            <h5>2017</h5>
-                            <span><img src="../../images/graduate_icon.png" alt="diplomes icon"></span>
-                            <h4><a href="http://www.lyceekastler.fr/" target="_blank" title="site st marie bastide" alt="site st marie bastide">Lycée Alfred Kastler</a></h4>
-                            <div class="blue_divider"></div>
-                            <h3>BTS Assistance Technique d'Ingénieur</h3>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="diplome_block">
-                            <h5>2018 - Aujourd'hui</h5>
-                            <span><img src="../../images/graduate_icon.png" alt="diplomes icon"></span>
-                            <h4><a href="https://www.ynov.com/" target="_blank" title="site st marie bastide" alt="site st marie bastide">Ynov Informatique</a></h4>
-                            <div class="blue_divider"></div>
-                            <h3>Ingésup - Ecole d'informatique</h3>
-                        </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </section>

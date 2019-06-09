@@ -8,22 +8,24 @@
         <div class="collapse navbar-collapse justify-content-center" id="myNavbar">
             <ul class="navbar-nav nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link" href="../Accueil/index.php">Accueil</a>
+                    <a class="nav-link" href="../accueil">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../CV/index.php">CV</a>
+                    <a class="nav-link" href="../messagerie">Messagerie</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Portfolio/index.php">Portfolio</a>
+                    <a class="nav-link" href="../cv">CV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Contact/index.php">Contact</a>
+                    <a class="nav-link" href="../portfolio">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Admin">S'identifier</a>
+                    <a class="nav-link" href="../contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php">Déconnexion</a>
                 </li>
             </ul>
         </div>
     </nav>
 </div>
-

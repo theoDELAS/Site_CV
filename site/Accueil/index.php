@@ -1,3 +1,18 @@
+<?php
+    try 
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=cv;charset=utf8', 'root', '');     
+    } 
+    catch (Exception $e) 
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    $query = $bdd->query('SELECT * FROM accueil');
+    $donnees = $query->fetch();
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,9 +36,7 @@
             <div id="text">
                 <h2>Bienvenue</h2>
                 <p>
-                    Vous découvrirez sur mon site qui je suis, mon parcours, mon travail ainsi que mon CV.
-                    Vous pourrez me joindre directement depuis ma page <a href="../Contact/contact.html" target="_blank" >contact</a>
-                    pour toutes questions ou renseignements.
+                    <?php echo $donnees['texte'] ?>
                 </p>
             </div>
         </div>
