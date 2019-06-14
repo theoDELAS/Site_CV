@@ -1,47 +1,44 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <?php include_once '../header_html.php' ?>;
-        <title>test connexion</title>
-    </head>
-    <body>
-        <?php
-            if(empty($_POST['id'])) 
+<?php
+    $bdd = new PDO('mysql:host=localhost;dbname=cv;charset=utf8', 'root', '');
+    $query = $bdd->query('SELECT * FROM utilisateurs');
+    $donnees = $query->fetch();
+    if(isset($_POST['id']) && isset($_POST['mdp']))
+    {
+        $id = secureInput($_POST['id']);
+        $mdp = secureInput($_POST['mdp']);
+
+        if(!empty($_POST['id']) && !empty($_POST['mdp']))
+        {
+            if($_POST['id'] == $donnees['login']) 
             {
-                echo 'Le champ identifiant est vide.';
-                echo '<a href="index.php">Retour</a>';
+                if($_POST['mdp'] == $donnees['mdp'])
+                {
+                    session_start();
+                    $_SESSION['connect'] = 1;
+                    header('location: ./messagerie');
+                }
             } 
             else 
             {
-                if(empty($_POST['mdp'])) 
-                {
-                    echo 'Le champ mot de passe est vide.';
-                    echo '<a href="index.php">Retour</a>';
-                } 
-                else 
-                {
-                    if($_POST['id'] !== 'admin') 
-                    {
-                        echo 'L\'identifiant est incorrect.';
-                        echo '<a href="index.php">Retour</a>';
-                    } 
-                    else 
-                    {
-                        if($_POST['mdp'] !== 'admin') 
-                        {
-                            echo 'Le mot de passe est incorrect.';
-                            echo '<a href="index.php">Retour</a>';
-                        } 
-                        else 
-                        {
-                            header('Location: ./messagerie/index.php');
-                        }
-                    }
-                }
+                header('Location: ./index.php');
             }
-        ?>
+        }
+        else
+        {
+            header('Location: ./index.php');
+        }
+    }
+    else 
+    {
+        header('Location: ./index.php');
+    }
 
-
-
-    </body>
-</html>
+    // securiser les input
+    function secureInput ($var)
+    {
+        $var = trim($var); /* supprime les espaces */
+        $var = stripcslashes($var); /* supprime les anti slashes */
+        $var = htmlspecialchars($var);
+        return $var;
+    }
+?>

@@ -1,7 +1,11 @@
 <?php
+    session_start();
+    if(!$_SESSION['connect'])
+    {
+        header('location: ../index.php');
+    }
     $bdd = new PDO('mysql:host=localhost;dbname=cv;charset=utf8', 'root', '');
     $query = $bdd->query('SELECT * FROM accueil');
-    $donnees = $query->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -13,15 +17,23 @@
     </head>
     <body>
         <?php include '../navbar_admin.php' ?>
-        <div class="container">
-            <h1>Admin Accueil</h1>
-        </div>
-        <div class="container">
-            <form action="./scripts/edit_accueil.php" method="post">
-                <textarea class="form-control" name="texte" cols="20" rows="10"><?= $donnees['texte'] ?></textarea>
+        <h1>Admin Accueil</h1>
+        <div class="container" id="form_accueil">
+            <?php while($donnees = $query->fetch())
+            {
+            ?>
+                <form action="./scripts/edit_accueil.php" method="post">
+                    <label for="titre">Titre</label>
+                    <input type="text" name="titre" value="<?= $donnees['titre'] ?>"><br>
 
-                <input class="btn btn-primary btn" type="submit" value="Modifier">
-            </form>
+                    <label for="texte">Texte</label>
+                    <textarea class="form-control" name="texte" cols="20" rows="10"><?= $donnees['texte'] ?></textarea>
+
+                    <input class="btn btn-primary btn" type="submit" value="Modifier">
+                </form>
+            <?php
+            }
+            ?>
         </div>
                                 
 

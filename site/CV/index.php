@@ -11,11 +11,8 @@
 
     $query2 = $bdd->query('SELECT * FROM competences ORDER BY id');
 
-    $query3 = $bdd->query('SELECT * FROM experiences_pro');
-
-    $query4 = $bdd->query('SELECT * FROM experiences_pro WHERE id%2 = 0');
-
-    $query5 = $bdd->query('SELECT * FROM experiences_pro WHERE id%2 = 1');
+    $query3 = $bdd->query('SELECT * FROM experiences_pro ORDER BY id DESC');
+    $donnees3 = $query3->fetchAll();
 
     $query6 = $bdd->query('SELECT * FROM diplomes ORDER BY id');
 ?>
@@ -50,7 +47,7 @@
                 <h1><?= $donnees['titre1'] ?></h1>
                 <h2><?= $donnees['titre2'] ?></h2>
                 <h3><?= $donnees['titre3'] ?></h3>
-                <a href="../../Documents/CV Théo DELAS 2019.pdf" class="button1">Télécharger CV</a>
+                <a href="../../Documents/CV DELAS Théo 2019.pdf" class="button1">Télécharger CV</a>
             </div>
         </section>
         <!-- SKILLS -->
@@ -88,43 +85,49 @@
                     
                 </div>
                 <ul class="timeline">
-                    <?php while($donnees4 = $query4->fetch())
-                    {
-                        $donnees5 = $query5->fetch();
+                    <?php foreach ($donnees3 as $index => $competence) {
+                        if($index %2 == 0) 
+                        {
+                        ?>
+                            <li>
+                                <!-- ICON VALISE -->
+                                <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
+                                <div class="timeline_panel_container">
+                                    <div class="timeline_panel">
+                                        <div class="timeline_text">
+                                            <h4><?= $competence['entreprise'] ?></h4>
+                                            <h3><?= $competence['poste'] ?></h3>
+                                            <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> <?= $competence['duree'] ?></p>
+                                        </div>
+                                        <div class="timeline_body">
+                                            <p><?= $competence['texte'] ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php
+                        }
+                        else
+                        {
+                        ?>
+                            <li>
+                                <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
+                                <div class="timeline_panel_container_inverted">
+                                    <div class="timeline_panel">
+                                        <div class="timeline_text">
+                                            <h4><?= $competence['entreprise'] ?></h4>
+                                            <h3><?= $competence['poste'] ?></h3>
+                                            <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> <?= $competence['duree'] ?></p>
+                                        </div>
+                                        <div class="timeline_body">
+                                            <p><?= $competence['texte'] ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php   
+                        }
 
-                    ?>                  
-                        <li>
-                            <!-- ICON VALISE -->
-                            <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
-                            <div class="timeline_panel_container">
-                                <div class="timeline_panel">
-                                    <div class="timeline_text">
-                                        <h4><?= $donnees4['lieu_entreprise'] ?></h4>
-                                        <h3><?= $donnees4['poste'] ?></h3>
-                                        <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> <?= $donnees4['duree'] ?></p>
-                                    </div>
-                                    <div class="timeline_body">
-                                        <p><?= $donnees4['texte_experience'] ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline_icon"><span class="fas fa-briefcase"></span></div>
-                            <div class="timeline_panel_container_inverted">
-                                <div class="timeline_panel">
-                                    <div class="timeline_text">
-                                        <h4><?= $donnees5['lieu_entreprise'] ?></h4>
-                                        <h3><?= $donnees5['poste'] ?></h3>
-                                        <p class="duration"><span><img src="../../images/time.png" alt="période d'embauche"></span> <?= $donnees5['duree'] ?></p>
-                                    </div>
-                                    <div class="timeline_body">
-                                        <p><?= $donnees5['texte_experience'] ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    <?php
                     }
                     ?>
                 </ul>

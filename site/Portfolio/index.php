@@ -1,3 +1,14 @@
+<?php
+    try 
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=cv', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+    } catch (Exception $e)
+    {
+        die('Erreur : ' . $e -> getMessage());
+    }
+
+    $query = $bdd->query('SELECT * FROM portfolio');
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,38 +33,19 @@
             <div class="white_divider"></div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <a href="https://unsplash.com" target="_blank">
-                            <img class="img-fluid img-thumbnail img_portfolio" src="../../images/spices.jpg" alt="image test">
-                        </a>
-                    </div>
-                    <div class="col-lg-4">
-                        <a href="https://unsplash.com" target="_blank">
-                            <img class="img-fluid img-thumbnail img_portfolio" src="../../images/mug.jpg" alt="image test">
-                        </a>
-                    </div>
-                    <div class="col-lg-4">
-                        <a href="https://unsplash.com" target="_blank">
-                            <img class="img-fluid img-thumbnail img_portfolio" src="../../images/nature.jpg" alt="image test">
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <a href="https://unsplash.com" target="_blank">
-                            <img class="img-fluid img-thumbnail img_portfolio" src="../../images/colors.jpg" alt="image test">
-                        </a>
-                    </div>
-                    <div class="col-lg-4">
-                        <a href="https://unsplash.com" target="_blank">
-                            <img class="img-fluid img-thumbnail img_portfolio" src="../../images/work.jpg" alt="image test">
-                        </a>
-                    </div>
-                    <div class="col-lg-4">
-                        <a href="https://unsplash.com" target="_blank">
-                            <img class="img-fluid img-thumbnail img_portfolio" src="../../images/spices.jpg" alt="image test">
-                        </a>
-                    </div>
+                    <?php while($donnees = $query->fetch())
+                    {
+                    ?>
+                        <div class="col-lg-4">
+                            <h3><?= $donnees['intitule'] ?></h3>
+                            <a href="<?= $donnees['lien'] ?>" target="_blank">
+                                <img class="img-fluid img-thumbnail img_portfolio" src="<?= $donnees['image'] ?>" alt="image projet Théo">
+                            </a>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
                 </div>
             </div>
         </section>

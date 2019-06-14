@@ -1,4 +1,9 @@
 <?php
+    session_start();
+    if(!$_SESSION['connect'])
+    {
+        header('location: ../index.php');
+    }
     $bdd = new PDO('mysql:host=localhost;dbname=cv;charset=utf8', 'root', '');
     $query = $bdd->query('SELECT * FROM message ORDER BY id');
 ?>
@@ -15,46 +20,55 @@
         <div class="container">
             <h1>Messages</h1>
             <?php 
-                while ($donnees = $query->fetch())
-            {
-            ?>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <?php 
-                                echo 'De : ' . $donnees['firstname'] . ' ' . $donnees['name'] . '<br>';
-                            ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <?php 
-                                echo 'Mail : ' . $donnees['email'] . '<br>';
-                            ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <?php 
-                                echo 'Téléphone : ' . $donnees['phone'] . '<br>';
-                            ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <?php 
-                                echo '<p>Message :<br> ' . $donnees['message'] . '</p><br>';
-                            ?>
-                        </div>
-                    </div>
-                    <?php
-                        echo '<a class="delete btn btn-danger" href="./scripts/script_delete.php?id=' . $donnees['id'] . '">Supprimer</a>';
+                if(!$bdd->query('SELECT COUNT(*) FROM message'))
+                {
+                    while ($donnees = $query->fetch())
+                    {
                     ?>
-                    <hr>
-                </div>
-            <?php
-            }
-            ?>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <?php 
+                                        echo 'De : ' . $donnees['firstname'] . ' ' . $donnees['name'] . '<br>';
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <?php 
+                                        echo 'Mail : ' . $donnees['email'] . '<br>';
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <?php 
+                                        echo 'Téléphone : ' . $donnees['phone'] . '<br>';
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <?php 
+                                        echo '<p>Message :<br> ' . $donnees['message'] . '</p><br>';
+                                    ?>
+                                </div>
+                            </div>
+                            <?php
+                                echo '<a class="delete btn btn-danger" href="./scripts/script_delete.php?id=' . $donnees['id'] . '">Supprimer</a>';
+                            ?>
+                            <hr>
+                        </div>
+                    <?php
+                    } 
+                }
+                else
+                {
+                    echo '<p id="no_message">Vous n\'avez aucun nouveau message.</p>';
+                }
+                ?>
+                
+
         </div>
                                 
 

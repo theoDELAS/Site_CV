@@ -33,11 +33,15 @@
         </header>
 
         <div id="main_background">
-            <div id="text">
-                <h2>Bienvenue</h2>
-                <p>
-                    <?php echo $donnees['texte'] ?>
-                </p>
+            <div class="container" id="text">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2><?= $donnees['titre'] ?></h2>
+                        <p>
+                            <?= $donnees['texte'] ?>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 

@@ -3,7 +3,16 @@
 body, html {
   font-family: Comfortaa, Arial, sans-serif;
 }
-  
+
+html {
+  margin:0;
+  padding:0;
+  background: url("../../images/main_background.jpg") no-repeat center fixed;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+  background-position-y: -240px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -71,7 +80,7 @@ a:hover {
 }
 
 /* BACKGROUND IMAGE */ 
-#main_background {
+/* #main_background {
   background-image: url("../../images/main_background_blank.jpg");
   height: 700px; 
   background-position-y: -130px;
@@ -80,14 +89,14 @@ a:hover {
   background-repeat: no-repeat;
   position: relative;
   box-shadow: 0 10px 5px -4px rgb(104, 104, 104);
-}
+} */
 
 /* TEXT MAIN PAGE */
 #text {
   position: absolute;
-  top: 300px;
-  left: 38%;
-  width: 30%;
+  top: 200px;
+  left: 30%;
+  width: 35%;
 }
 
 #text h2 {
