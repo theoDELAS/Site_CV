@@ -1,0 +1,117 @@
+/* GENERAL ELEMENTS */
+
+body, html {
+  font-family: Comfortaa, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  color: #00a8db;
+  text-decoration: none;
+}
+/* 
+##############
+#    BODY    #
+##############
+*/
+
+/*
+################
+#    HEADER    #
+################ 
+*/
+/* NAVBAR */
+.navbar {
+  background-color: #999;
+  font-size: 20px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+}
+
+.navbar .nav-link {
+  text-align: center;
+  margin: 0;
+}
+
+.nav-tabs .nav-link.active {
+  color: #00a8db !important;
+}
+
+.navbar li a {
+  color: white !important;
+}
+
+.navbar li {
+  padding: 0 30px 0 30px;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+  color: #00a8db !important;
+  background-color: white !important;
+}
+
+.navbar .navbar-toggler {
+  border-style: none;
+}
+
+.navbar .navbar-toggler .fas {
+  color: white;
+  font-size: 24px;
+}
+
+
+#main_background {
+  margin: 0;
+  padding: 0;
+  height: 969px;
+  background: url("../images/background.jpg") no-repeat center fixed ;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+}
+
+/* TEXT MAIN PAGE */
+#text {
+  padding-top: 150px;
+  width: 80%;
+}
+
+#text h2 {
+  font-size: 50px;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+#text p {
+  font-size: 20px;
+  text-align: center;
+}
+
+#text a {
+  font-weight: bold;
+}
+
+/* 
+####################
+#    FOOTER    #
+####################
+*/
+footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+footer .footer-copyright {
+  color: #000;
+}
