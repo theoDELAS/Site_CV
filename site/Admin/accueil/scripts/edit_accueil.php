@@ -9,7 +9,7 @@
         {
             $bdd = new PDO('mysql:host=localhost;dbname=cv;charset=utf8', 'root', '');
             $query = $bdd->prepare('UPDATE accueil SET texte = ?, titre = ?');
-            $query->execute([$texte, $titre]);
+            $query->execute([htmlspecialchars_decode($texte), htmlspecialchars_decode($titre)]);
             header('Location: ../index.php');
         }
         else 

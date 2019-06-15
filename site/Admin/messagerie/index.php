@@ -6,6 +6,7 @@
     }
     $bdd = new PDO('mysql:host=localhost;dbname=cv;charset=utf8', 'root', '');
     $query = $bdd->query('SELECT * FROM message ORDER BY id');
+    $isVoid = $bdd->query('SELECT COUNT(*) FROM message');
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
         <div class="container">
             <h1>Messages</h1>
             <?php 
-                if(!$bdd->query('SELECT COUNT(*) FROM message'))
+                if($isVoid->fetchColumn())
                 {
                     while ($donnees = $query->fetch())
                     {

@@ -35,12 +35,10 @@
                     <form action="./scripts/edit_header.php" method="post">
                         <label for="photo">Photo</label>
                         <input type="text" name="photo" value="<?= $donnees_header['photo'] ?>"><br>
-                        <label for="titre1">Titre 1</label>
-                        <input type="text" name="titre1" value="<?= $donnees_header['titre1'] ?>"><br>
-                        <label for="titre2">Titre 2</label>
-                        <input type="text" name="titre2" value="<?= $donnees_header['titre2'] ?>"><br>
-                        <label for="titre3">Titre 3</label>
-                        <input type="text" name="titre3" value="<?= $donnees_header['titre3'] ?>"><br>
+                        <label for="statut">Statut</label>
+                        <textarea class="ckeditor" name="statut" cols="10" rows="5"><?= $donnees_header['statut'] ?></textarea>
+                        <label for="ckeditor">Année</label>
+                        <textarea class="form-control" name="annee" cols="10" rows="5"><?= $donnees_header['annee'] ?></textarea>
 
                         <input class="btn btn-primary btn" type="submit" value="Modifier">
                     </form>
@@ -91,16 +89,20 @@
                 <?php while($donnees_experiences = $query_experiences->fetch())
                 {
                 ?>
-                    <div class="col-md-4">           
+                    <div class="col-md-6">           
                         <form action="./scripts/edit_experiences.php" method="POST">
                             <label for="entreprise">Entreprise</label>
                             <input type="text" name="entreprise" value="<?= $donnees_experiences['entreprise'] ?>"><br>
+
                             <label for="poste">Poste</label>
                             <input type="text" name="poste" value="<?= $donnees_experiences['poste'] ?>"><br>
+
                             <label for="texte">Texte</label>
-                            <input type="text" name="texte" value="<?= $donnees_experiences['texte'] ?>"><br>
+                            <textarea class="ckeditor" name="texte" cols="10" rows="5"><?= $donnees_experiences['texte'] ?></textarea>
+
                             <label for="duree">Durée</label>
                             <input type="text" name="duree" value="<?= $donnees_experiences['duree'] ?>"><br>
+                            
                             <input type="hidden" value="<?= $donnees_experiences['id'] ?>" name="id">
 
 
@@ -150,10 +152,7 @@
         </div>
         <hr>
         <!-- /DIPLOMES -->
-                  
-
-
-
+        
         <?php include('../../script.php'); ?>
         <?php include('../../footer.php'); ?>
     </body>

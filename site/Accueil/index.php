@@ -33,22 +33,21 @@
         </header>
 
         <div id="main_background">
-            <div class="container" id="text">
+            <div class="container-fluid" id="text">
                 <div class="row">
                     <div class="col-md-12">
                         <h2><?= $donnees['titre'] ?></h2>
-                        <p>
-                            <?= $donnees['texte'] ?>
-                        </p>
+                        <?= $donnees['texte'] ?>
                     </div>
                 </div>
             </div>
+            <!-- FOOTER -->
+            <?php
+                include('../footer.php');
+            ?>
         </div>
 
-        <!-- FOOTER -->
-        <?php
-            include('../footer.php');
-        ?>
+
 
         <!-- SCRIPTS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -4,15 +4,6 @@ body, html {
   font-family: Comfortaa, Arial, sans-serif;
 }
 
-html {
-  margin:0;
-  padding:0;
-  background: url("../../images/main_background.jpg") no-repeat center fixed;
-  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
-  background-size: cover; /* version standardisée */
-  background-position-y: -240px;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -79,24 +70,20 @@ a:hover {
   font-size: 24px;
 }
 
-/* BACKGROUND IMAGE */ 
-/* #main_background {
-  background-image: url("../../images/main_background_blank.jpg");
-  height: 700px; 
-  background-position-y: -130px;
-  background-size: cover;
-  text-align: center;
-  background-repeat: no-repeat;
-  position: relative;
-  box-shadow: 0 10px 5px -4px rgb(104, 104, 104);
-} */
+
+#main_background {
+  margin: 0;
+  padding: 0;
+  height: 969px;
+  background: url("../../images/background.jpg") no-repeat center fixed ;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+}
 
 /* TEXT MAIN PAGE */
 #text {
-  position: absolute;
-  top: 200px;
-  left: 30%;
-  width: 35%;
+  padding-top: 200px;
+  width: 80%;
 }
 
 #text h2 {
@@ -106,7 +93,7 @@ a:hover {
 }
 
 #text p {
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -124,4 +111,8 @@ footer {
   bottom: 0px;
   width: 100%;
   margin: auto;
+}
+
+footer .footer-copyright {
+  color: #000;
 }

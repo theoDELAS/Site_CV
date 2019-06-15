@@ -27,7 +27,7 @@
                 <input type="text" name="poste" placeholder="Poste">
 
                 <label for="texte">Texte</label>
-                <textarea class="form-control" name="texte" cols="20" rows="10" placeholder="Texte"></textarea>
+                <textarea class="ckeditor" name="texte" cols="10" rows="5" placeholder="Texte"></textarea>
                 
                 <label for="duree">Durée</label>
                 <input type="text" name="duree" placeholder="Durée">

@@ -14,6 +14,7 @@
         <?php include '../../header_html.php'; ?>
         <link rel="stylesheet" href="../style.css">
         <title>Admin Accueil</title>
+
     </head>
     <body>
         <?php include '../navbar_admin.php' ?>
@@ -27,7 +28,7 @@
                     <input type="text" name="titre" value="<?= $donnees['titre'] ?>"><br>
 
                     <label for="texte">Texte</label>
-                    <textarea class="form-control" name="texte" cols="20" rows="10"><?= $donnees['texte'] ?></textarea>
+                    <textarea class="ckeditor" name="texte" cols="20" rows="10"><?= $donnees['texte'] ?></textarea>
 
                     <input class="btn btn-primary btn" type="submit" value="Modifier">
                 </form>
@@ -36,9 +37,6 @@
             ?>
         </div>
                                 
-
-
-
         <?php include('../../script.php'); ?>
         <?php include('../../footer.php'); ?>
     </body>

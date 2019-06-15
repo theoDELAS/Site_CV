@@ -44,9 +44,9 @@
                 <img src=<?='"' . $donnees['photo'] . '"'?> alt="photo de profil Théo Delas" class="rounded-circle">
             </div>
             <div id="text_about_me">
-                <h1><?= $donnees['titre1'] ?></h1>
-                <h2><?= $donnees['titre2'] ?></h2>
-                <h3><?= $donnees['titre3'] ?></h3>
+                <h1>Théo Delas</h1>
+                <h2><?= $donnees['statut'] ?></h2>
+                <h3><?= $donnees['annee'] ?></h3>
                 <a href="../../Documents/CV DELAS Théo 2019.pdf" class="button1">Télécharger CV</a>
             </div>
         </section>
@@ -62,7 +62,6 @@
                 while ($donnees2 = $query2->fetch()) 
                 {
                 ?>
-
                     <!-- CONTAINER LEFT PROGRESS-BAR -->
                     <div class="col-md-6">
                         <div class="progress">
