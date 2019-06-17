@@ -29,6 +29,9 @@
     <div class="footer-copyright text-center py-3">
         © 2019 Copyright Théo Delas
     </div>
+    <div class="footer-mentions text-center py-3">
+        <a href="./mentions_legales.php" target="_blank" rel="noopener noreferrer">Mentions légales</a>
+    </div>
     <!-- Copyright -->
 
 </footer>

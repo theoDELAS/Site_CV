@@ -66,7 +66,7 @@
                     <div class="col-md-6">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" aria-valuenow="<?= $donnees2['pourcentage'] ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $donnees2['pourcentage'] ?>%">
-                                <h5><?= $donnees2['ma_competence'] . ' ' . $donnees2['pourcentage'] . '%' ?></h5>
+                                <h5><?= $donnees2['ma_competence'] . ''?></h5>
                             </div>
                         </div>
                     </div>
